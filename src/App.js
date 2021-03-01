@@ -17,7 +17,7 @@ class App extends Component {
             {name: "Zack", percent: 88, physics:94.2, chemistry:94.0, maths:75, total:240, roll:1156},
             {name: "Sam", percent: 42, physics:95.2, chemistry:93.0, maths:75, total:240, roll:1156},
             {name: "Nicky", percent: 22, physics:96.2, chemistry:70.0, maths:75, total:240, roll:1156}],
-    paginate: 10
+    paginate: 3
   };
 }
   render() {
