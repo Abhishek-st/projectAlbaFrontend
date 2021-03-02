@@ -357,7 +357,7 @@ class Leaderboard extends Component {
               {/* <td colspan="10000"><h3>Leaderboard</h3></td> */}
             </tr>
             <tr>
-              <td colspan="10000">
+              <td colSpan="10000">
                 <form onChange={this.filterRank}>
                   Name: <input type="search" name="search" placeholder="Search for Name"/>
                 </form>

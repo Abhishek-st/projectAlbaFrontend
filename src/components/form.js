@@ -17,6 +17,8 @@ class Marks extends Component {
       'physics':'',
       'chemistry':'',
       'maths':'',
+      'msg': '',
+      'msg2':'',
       validate: {
         emailState: '',
         marksStateP: '',
@@ -102,6 +104,7 @@ class Marks extends Component {
 
   submitForm(e) {
     e.preventDefault();
+    
     console.log(`Email: ${ this.state.maths }`)
     const input = {"name":this.state.name,
                     "roll":parseInt(this.state.roll),
@@ -109,17 +112,24 @@ class Marks extends Component {
                     "chemistry":parseFloat(this.state.chemistry),
                     "maths":parseFloat(this.state.maths),};
 
-    console.log(input)
-    let url = "http://localhost:8000/api/postMarks/"
-    fetch(url, {
-    method: 'POST',  
-    body: JSON.stringify(input),  
-    headers:{
-      'Content-Type': 'application/json'
-      }
-      }).then(res => res.json())
-      .then(response => console.log('Success:', JSON.stringify(response)))
-      .catch(error => console.error('Error:', error));
+    console.log(this.state.validate)
+    this.setState({'msg2':'submitting...', 'msg':''})
+    if( this.state.validate.nameState=="has-success" && this.state.validate.rollState=="has-success" && this.state.validate.marksStateM=="has-success" && this.state.validate.marksStateC=="has-success" && this.state.validate.marksStateP=="has-success" ){
+      let url = "https://projectalbackend.herokuapp.com/api/postMarks/"
+      // let url = "http://localhost:8000/api/postMarks/"
+      fetch(url, {
+      method: 'POST',  
+      body: JSON.stringify(input),  
+      headers:{
+        'Content-Type': 'application/json'
+        }
+        }).then(res => res.json())
+        .then(response => this.setState({msg:response.msg, msg2:''}))
+        .catch(error => console.error('Error:', error));       
+    }else{
+      this.setState({'msg':'Data Inconsitency', 'msg2':''})
+    }
+
   }
 
   render() {
@@ -260,6 +270,8 @@ class Marks extends Component {
           </Col>
 
           <Button>Submit</Button>
+          {this.state.msg.length > 0 ? <center><h2>{this.state.msg}</h2></center> : null}
+          {this.state.msg2.length > 0 ? <center><h2>{this.state.msg2}</h2></center> : null}
       </Form>
       </Container>
     );
@@ -267,3 +279,5 @@ class Marks extends Component {
 }
 
 export default Marks;
+
+{/* <center><h2>submitting...</h2> */}

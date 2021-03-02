@@ -1,6 +1,7 @@
 
 import Leaderboard from './Leaderboard'
 import React,{ Component } from 'react';
+import Loader from 'react-loader-spinner';
 
 class CallBoard extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class CallBoard extends Component {
     paginate: 5
   };
 
-  let url = "http://localhost:8000/api/leaderBoard/"
+  let url = "https://projectalbackend.herokuapp.com/api/leaderBoard/"
   fetch(url)
       .then(response => response.json())
       .then(data =>  this.setState({users:data, paginate:5}))
@@ -30,7 +31,15 @@ componentDidMount() {
   render() {
 
     if(!this.state.users.length)
-        return null;
+        return (
+
+          <div>
+            <center>
+            <Loader type="Circles" color="#00BFFF" height={80} width={80}/> 
+            </center>
+          </div>
+          
+        );
 
     return (
       <div>
