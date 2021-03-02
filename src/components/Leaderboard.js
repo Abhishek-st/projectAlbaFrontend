@@ -351,10 +351,10 @@ class Leaderboard extends Component {
   render() {
     return (
       <div>
-        <table id="lBoard">
+        <table id="lBoard" className="table table-striped">
           <tbody className='ranking'>
             <tr>
-              <td colspan="10000"><h1>Leaderboard</h1></td>
+              {/* <td colspan="10000"><h3>Leaderboard</h3></td> */}
             </tr>
             <tr>
               <td colspan="10000">
@@ -363,8 +363,8 @@ class Leaderboard extends Component {
                 </form>
               </td>
             </tr>
-            <tr>
-              <td className='rank-header sortScore' onClick={ this.sortUsersByPercent }> Rank </td>
+            <tr className="thead-dark"> 
+              <td scope="col" className='rank-header sortScore' onClick={ this.sortUsersByPercent }> Rank </td>
               <td className='rank-header sortAlpha' onClick={ this.sortUsersByName }> Roll No </td>
               <td className='rank-header sortAlpha' onClick={ this.sortUsersByName }> Name </td>
               <td className='rank-header' onClick={ this.sortUsersByPercent }> Percentage </td>
@@ -389,11 +389,25 @@ class Leaderboard extends Component {
            }
           </tbody>
         </table>
-        <button className='decrement' onClick={ this.decreasePage }>prev</button>
-        { this.state.page == 1 ? null: <button onClick={ this.decreasePage }> { this.state.page - 1 }</button>}
-        <button> { this.state.page }</button>
-        { this.state.page < this.state.pageMax ? <button onClick={ this.increasePage }> { this.state.page + 1 }</button>: null }
-        <button className='increment' onClick={ this.increasePage }>next</button>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
+              <button className='decrement btn btn-primary' onClick={ this.decreasePage }>prev</button>
+            </div>
+            {/* <div className="col-sm">
+              { this.state.page == 1 ? null: <button onClick={ this.decreasePage }> { this.state.page - 1 }</button>}
+              <button> { this.state.page }</button>
+              { this.state.page < this.state.pageMax ? <button onClick={ this.increasePage }> { this.state.page + 1 }</button>: null }
+
+            </div> */}
+            <div className="col-sm">
+                        <button className='increment btn btn-primary' onClick={ this.increasePage }>next</button>
+            </div>
+            
+          </div>
+        </div>
+
+
       </div>
     );
   }
