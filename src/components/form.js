@@ -161,7 +161,7 @@ class Marks extends Component {
                 Correct format
               </FormFeedback>
               <FormFeedback>
-                Name should have atleast 3 character
+                Name should have atleast 3 character and NO special character like .? -_
               </FormFeedback>
             </FormGroup>
           </Col>

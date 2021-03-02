@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 // import Leaderboard from 'react-leaderboard';44
 import CallBoard from './components/callBoard';
-import Marks from './components/form'
+import Marks from './components/form';
+import Home from './components/home';
 import React,{ Component } from 'react';
 import {
   Route,
@@ -22,7 +23,7 @@ class App extends Component {
             <li><NavLink to="/postmarks">Post Marks</NavLink></li>
           </ul>
           <div className="content">
-            <Route exact path="/" component={Marks}/>
+            <Route exact path="/" component={Home}/>
               <Route path="/leaderboard" component={CallBoard}/>
               <Route path="/postmarks" component={Marks}/>
           </div>
