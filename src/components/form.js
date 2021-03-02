@@ -161,7 +161,7 @@ class Marks extends Component {
                 Correct format
               </FormFeedback>
               <FormFeedback>
-                Name should have atleast 3 character and NO special character like .? -_
+                Name should have atleast 3 character and NO special character like .? -_ or digits
               </FormFeedback>
             </FormGroup>
           </Col>
@@ -186,7 +186,7 @@ class Marks extends Component {
                 Correct format
               </FormFeedback>
               <FormFeedback>
-                Roll No length should lie between 5-8
+                Roll No length should lie between 4-8
               </FormFeedback>
             </FormGroup>
           </Col>
